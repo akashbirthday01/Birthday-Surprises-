@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Surprise ❤️</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#050711;
+  color:white;
+  font-family:Georgia, serif;
+  overflow-x:hidden;
+}
+
+.page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.8) 1px, transparent 2px),
+    radial-gradient(circle at 80% 30%, rgba(255,255,255,.7) 1px, transparent 2px),
+    radial-gradient(circle at 40% 75%, rgba(255,255,255,.6) 1px, transparent 2px),
+    radial-gradient(circle at 70% 85%, rgba(255,255,255,.7) 1px, transparent 2px);
+  background-size:180px 180px,220px 220px,250px 250px,200px 200px;
+  opacity:.5;
+}
+
+.glow{
+  position:absolute;
+  width:280px;
+  height:280px;
+  background:rgba(177,145,80,.12);
+  filter:blur(80px);
+  border-radius:50%;
+}
+
+.content{
+  position:relative;
+  z-index:2;
+  max-width:700px;
+}
+
+.small{
+  color:#c9b27a;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  font-size:12px;
+  margin-bottom:25px;
+}
+
+h1{
+  font-size:clamp(42px,10vw,78px);
+  line-height:1.05;
+  margin-bottom:20px;
+  font-weight:400;
+}
+
+h2{
+  font-size:36px;
+  font-weight:400;
+  margin-bottom:20px;
+}
+
+.gold{
+  color:#d7bd7a;
+}
+
+p{
+  color:#c8c8cf;
+  line-height:1.9;
+  font-family:Arial,sans-serif;
+  font-size:16px;
+}
+
+button{
+  margin-top:35px;
+  padding:15px 28px;
+  border:1px solid #bfa66b;
+  background:transparent;
+  color:#e8d39a;
+  border-radius:30px;
+  font-size:14px;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  background:#bfa66b;
+  color:#050711;
+  transform:translateY(-3px);
+}
+
+.hidden{
+  display:none;
+}
+
+.fade{
+  animation:fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(25px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.card-container{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  margin-top:30px;
+}
+
+.card{
+  padding:25px 15px;
+  border:1px solid rgba(215,189,122,.25);
+  border-radius:18px;
+  background:rgba(255,255,255,.03);
+}
+
+.card span{
+  font-size:28px;
+}
+
+.card h3{
+  margin:12px 0 8px;
+  font-size:17px;
+  font-weight:400;
+}
+
+.card p{
+  font-size:13px;
+  line-height:1.6;
+}
+
+.letter{
+  text-align:left;
+  padding:28px;
+  border:1px solid rgba(215,189,122,.3);
+  border-radius:20px;
+  background:rgba(255,255,255,.035);
+  margin-top:25px;
+}
+
+.letter p{
+  margin-bottom:15px;
+}
+
+.gift{
+  font-size:85px;
+  margin:20px;
+  cursor:pointer;
+  transition:.4s;
+}
+
+.gift:hover{
+  transform:scale(1.12) rotate(-4deg);
+}
+
+.footer{
+  color:#888;
+  font-family:Arial,sans-serif;
+  font-size:12px;
+  margin-top:35px;
+}
+
+@media(max-width:500px){
+  .card-container{
+    grid-template-columns:1fr;
+  }
+
+  .letter{
+    padding:22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="glow"></div>
+
+<!-- INTRO -->
+<section class="page" id="intro">
+  <div class="content fade">
+    <div class="small">A little surprise</div>
+
+    <h1>Hey,<br><span class="gold">Birthday Girl ❤️</span></h1>
+
+    <p>
+      I made a little corner of the internet just for your special day.
+      Nothing too complicated… just a few words and memories.
+    </p>
+
+    <button onclick="showSection('birthday')">
+      Open Your Surprise →
+    </button>
+  </div>
+</section>
+
+
+<!-- BIRTHDAY -->
+<section class="page hidden" id="birthday">
+  <div class="content fade">
+
+    <div class="small">Today is your day</div>
+
+    <h1>Happy Birthday<br><span class="gold">Ruqiya 🎂</span></h1>
+
+    <p>
+      Some days are ordinary, and then there are days that deserve
+      to be remembered a little differently.
+    </p>
+
+    <button onclick="showSection('special')">
+      Continue →
+    </button>
+
+  </div>
+</section>
+
+
+<!-- SPECIAL -->
+<section class="page hidden" id="special">
+  <div class="content fade">
+
+    <div class="small">A few things</div>
+
+    <h2>Why you're <span class="gold">special</span></h2>
+
+    <div class="card-container">
+
+      <div class="card">
+        <span>✨</span>
+        <h3>Your Presence</h3>
+        <p>Some people simply make ordinary moments feel better.</p>
+      </div>
+
+      <div class="card">
+        <span>🤍</span>
+        <h3>Your Heart</h3>
+        <p>The kindness and care you show to people matters more than you know.</p>
+      </div>
+
+      <div class="card">
+        <span>🌙</span>
+        <h3>Your Little Things</h3>
+        <p>Sometimes it's the smallest things that become the biggest memories.</p>
+      </div>
+
+      <div class="card">
+        <span>🫶</span>
+        <h3>Your Smile</h3>
+        <p>One of those little things that can instantly make a moment brighter.</p>
+      </div>
+
+    </div>
+
+    <button onclick="showSection('letter')">
+      There's a letter for you →
+    </button>
+
+  </div>
+</section>
+
+
+<!-- LETTER -->
+<section class="page hidden" id="letter">
+  <div class="content fade">
+
+    <div class="small">A few words from me</div>
+
+    <h2>For <span class="gold">you 🤍</span></h2>
+
+    <div class="letter">
+
+      <p>
+        Happy Birthday, Ruqiya. ❤️
+      </p>
+
+      <p>
+        I hope this new year of your life brings you countless reasons
+        to smile, peaceful days, beautiful memories and all the happiness
+        you quietly wish for.
+      </p>
+
+      <p>
+        You deserve to be appreciated not only on your birthday,
+        but on all those normal days when nobody says it out loud.
+      </p>
+
+      <p>
+        May Allah protect you, keep you happy, give you success in
+        everything good you work for, and fill your life with peace
+        and blessings. Ameen. 🤍
+      </p>
+
+      <p>
+        And now… there's just one last thing waiting for you.
+      </p>
+
+    </div>
+
+    <button onclick="showSection('gift')">
+      One Last Surprise 🎁
+    </button>
+
+  </div>
+</section>
+
+
+<!-- GIFT -->
+<section class="page hidden" id="gift">
+  <div class="content fade">
+
+    <div class="small">One last thing</div>
+
+    <h2>Tap the <span class="gold">gift</span></h2>
+
+    <div class="gift" onclick="openGift()">🎁</div>
+
+    <div id="finalMessage" class="hidden">
+
+      <h2 class="gold">For your birthday… 🤍</h2>
+
+      <p>
+        May every coming chapter of your life be more beautiful
+        than the one before it.
+        May your smile never lose its reason,
+        and may Allah always keep you surrounded by happiness,
+        peace and people who genuinely care about you.
+      </p>
+
+      <p style="margin-top:20px;">
+        Happy Birthday once again. 🎂✨
+      </p>
+
+      <div class="footer">
+        Made specially for you ❤️
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<script>
+
+function showSection(id){
+
+  document.querySelectorAll(".page").forEach(function(section){
+    section.classList.add("hidden");
+  });
+
+  document.getElementById(id).classList.remove("hidden");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+function openGift(){
+
+  document.getElementById("finalMessage").classList.remove("hidden");
+
+  document.querySelector(".gift").style.transform =
+    "scale(1.2) rotate(5deg)";
+}
+
+</script>
+
+</body>
+  </html>
