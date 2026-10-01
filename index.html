@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Little Surprise ❤️</title>
+<title>For Ruqia ✨</title>
 
 <style>
 *{
@@ -12,54 +12,57 @@
   box-sizing:border-box;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   background:#050711;
-  color:white;
-  font-family:Georgia, serif;
+  color:#fff;
+  font-family:Georgia, "Times New Roman", serif;
   overflow-x:hidden;
 }
 
-.page{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:25px;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-}
-
+/* Stars */
 .stars{
   position:fixed;
   inset:0;
   pointer-events:none;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,.8) 1px, transparent 2px),
-    radial-gradient(circle at 80% 30%, rgba(255,255,255,.7) 1px, transparent 2px),
-    radial-gradient(circle at 40% 75%, rgba(255,255,255,.6) 1px, transparent 2px),
-    radial-gradient(circle at 70% 85%, rgba(255,255,255,.7) 1px, transparent 2px);
-  background-size:180px 180px,220px 220px,250px 250px,200px 200px;
-  opacity:.5;
+  z-index:0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,220,150,.5) 1px, transparent 1px);
+  background-size:90px 90px, 150px 150px;
+  background-position:10px 20px, 50px 80px;
+  opacity:.35;
 }
 
-.glow{
-  position:absolute;
-  width:280px;
-  height:280px;
-  background:rgba(177,145,80,.12);
-  filter:blur(80px);
-  border-radius:50%;
-}
-
-.content{
+/* Main */
+section{
+  min-height:100vh;
+  padding:80px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   position:relative;
-  z-index:2;
-  max-width:700px;
+  z-index:1;
+}
+
+.container{
+  width:100%;
+  max-width:850px;
+  text-align:center;
+}
+
+/* Hero */
+.hero{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at center, rgba(35,45,100,.35), transparent 55%);
 }
 
 .small{
-  color:#c9b27a;
+  color:#d8c58a;
   letter-spacing:4px;
   text-transform:uppercase;
   font-size:12px;
@@ -67,128 +70,223 @@ body{
 }
 
 h1{
-  font-size:clamp(42px,10vw,78px);
+  font-size:clamp(45px,12vw,90px);
+  font-weight:400;
   line-height:1.05;
-  margin-bottom:20px;
-  font-weight:400;
+  margin-bottom:25px;
+  text-shadow:0 0 30px rgba(255,255,255,.18);
 }
 
-h2{
-  font-size:36px;
-  font-weight:400;
-  margin-bottom:20px;
+.glow{
+  color:#fff4c7;
+  text-shadow:
+    0 0 10px rgba(255,230,150,.6),
+    0 0 35px rgba(255,220,130,.3);
 }
 
-.gold{
-  color:#d7bd7a;
+.subtitle{
+  font-size:19px;
+  line-height:1.8;
+  color:#d5d5df;
+  max-width:600px;
+  margin:auto;
 }
 
-p{
-  color:#c8c8cf;
-  line-height:1.9;
-  font-family:Arial,sans-serif;
-  font-size:16px;
-}
-
-button{
+.btn{
+  display:inline-block;
   margin-top:35px;
-  padding:15px 28px;
-  border:1px solid #bfa66b;
-  background:transparent;
-  color:#e8d39a;
-  border-radius:30px;
-  font-size:14px;
-  letter-spacing:1px;
-  cursor:pointer;
+  padding:14px 28px;
+  border:1px solid rgba(255,220,150,.6);
+  border-radius:50px;
+  color:#fff5d0;
+  text-decoration:none;
+  background:rgba(255,255,255,.04);
   transition:.3s;
 }
 
-button:hover{
-  background:#bfa66b;
-  color:#050711;
+.btn:hover{
+  background:rgba(255,220,150,.12);
   transform:translateY(-3px);
 }
 
-.hidden{
-  display:none;
+/* Headings */
+.section-title{
+  font-size:42px;
+  font-weight:400;
+  margin-bottom:20px;
 }
 
-.fade{
-  animation:fadeIn 1.2s ease;
-}
-
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(25px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-.card-container{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-  margin-top:30px;
-}
-
-.card{
-  padding:25px 15px;
-  border:1px solid rgba(215,189,122,.25);
-  border-radius:18px;
-  background:rgba(255,255,255,.03);
-}
-
-.card span{
-  font-size:28px;
-}
-
-.card h3{
-  margin:12px 0 8px;
+.section-text{
+  color:#bfc0ca;
+  line-height:1.9;
   font-size:17px;
+}
+
+/* Memories */
+.memories{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+  margin-top:40px;
+}
+
+.memory{
+  min-height:230px;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:22px;
+  padding:30px 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.06),
+    rgba(255,255,255,.015)
+  );
+  box-shadow:0 10px 40px rgba(0,0,0,.25);
+  transition:.35s;
+}
+
+.memory:hover{
+  transform:translateY(-7px);
+  border-color:rgba(255,220,150,.35);
+}
+
+.memory-icon{
+  font-size:42px;
+  margin-bottom:18px;
+}
+
+.memory h3{
+  color:#fff1bf;
+  margin-bottom:10px;
+  font-size:20px;
   font-weight:400;
 }
 
-.card p{
-  font-size:13px;
+.memory p{
+  color:#aaaeba;
   line-height:1.6;
 }
 
+/* Letter */
 .letter{
-  text-align:left;
-  padding:28px;
-  border:1px solid rgba(215,189,122,.3);
-  border-radius:20px;
+  margin-top:40px;
+  padding:35px 28px;
+  border-radius:25px;
   background:rgba(255,255,255,.035);
-  margin-top:25px;
+  border:1px solid rgba(255,220,150,.18);
+  box-shadow:0 0 50px rgba(20,30,80,.25);
+  text-align:left;
 }
 
 .letter p{
-  margin-bottom:15px;
+  color:#d5d5df;
+  line-height:2;
+  font-size:17px;
+  margin-bottom:18px;
 }
 
+/* Gift */
 .gift{
-  font-size:85px;
-  margin:20px;
+  margin:40px auto 0;
+  width:170px;
+  height:170px;
+  border-radius:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:80px;
   cursor:pointer;
+  background:linear-gradient(145deg,#171b35,#0b0e1c);
+  border:1px solid rgba(255,220,150,.3);
+  box-shadow:0 0 35px rgba(255,220,150,.12);
   transition:.4s;
 }
 
 .gift:hover{
-  transform:scale(1.12) rotate(-4deg);
+  transform:scale(1.06) rotate(2deg);
+}
+
+.gift-message{
+  display:none;
+  margin-top:30px;
+  font-size:20px;
+  color:#fff0bb;
+  line-height:1.8;
+}
+
+.gift-message.show{
+  display:block;
+  animation:fadeUp .8s ease;
+}
+
+/* Final */
+.final{
+  background:
+    radial-gradient(circle at center,
+    rgba(75,60,120,.28),
+    transparent 60%);
+}
+
+.final-heart{
+  font-size:70px;
+  margin-bottom:20px;
+  animation:pulse 2s infinite;
 }
 
 .footer{
-  color:#888;
-  font-family:Arial,sans-serif;
-  font-size:12px;
-  margin-top:35px;
+  padding:30px 20px;
+  text-align:center;
+  color:#777b8a;
+  font-size:13px;
+  position:relative;
+  z-index:1;
 }
 
-@media(max-width:500px){
-  .card-container{
-    grid-template-columns:1fr;
+/* Animations */
+@keyframes pulse{
+  0%,100%{
+    transform:scale(1)
+  }
+
+  50%{
+    transform:scale(1.12)
+  }
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.fade{
+  animation:fadeUp 1.2s ease;
+}
+
+/* Mobile */
+@media(max-width:600px){
+  section{
+    padding:70px 18px;
+  }
+
+  .section-title{
+    font-size:34px;
   }
 
   .letter{
-    padding:22px;
+    padding:28px 20px;
+  }
+
+  .letter p{
+    font-size:16px;
   }
 }
 </style>
@@ -197,198 +295,177 @@ button:hover{
 <body>
 
 <div class="stars"></div>
-<div class="glow"></div>
 
-<!-- INTRO -->
-<section class="page" id="intro">
-  <div class="content fade">
-    <div class="small">A little surprise</div>
+<!-- HERO -->
+<section class="hero">
+  <div class="container fade">
 
-    <h1>Hey,<br><span class="gold">Birthday Girl ❤️</span></h1>
+    <div class="small">A little surprise for you</div>
 
-    <p>
-      I made a little corner of the internet just for your special day.
-      Nothing too complicated… just a few words and memories.
+    <h1>
+      Happy Birthday<br>
+      <span class="glow">Ruqia ✨</span>
+    </h1>
+
+    <p class="subtitle">
+      Some people make ordinary moments feel a little more special.
+      This little corner of the internet is made especially for you.
     </p>
 
-    <button onclick="showSection('birthday')">
-      Open Your Surprise →
-    </button>
-  </div>
-</section>
-
-
-<!-- BIRTHDAY -->
-<section class="page hidden" id="birthday">
-  <div class="content fade">
-
-    <div class="small">Today is your day</div>
-
-    <h1>Happy Birthday<br><span class="gold">Ruqiya 🎂</span></h1>
-
-    <p>
-      Some days are ordinary, and then there are days that deserve
-      to be remembered a little differently.
-    </p>
-
-    <button onclick="showSection('special')">
-      Continue →
-    </button>
+    <a href="#memories" class="btn">Begin the surprise ↓</a>
 
   </div>
 </section>
 
+<!-- MEMORIES -->
+<section id="memories">
+  <div class="container">
 
-<!-- SPECIAL -->
-<section class="page hidden" id="special">
-  <div class="content fade">
+    <div class="small">Chapter One</div>
 
-    <div class="small">A few things</div>
+    <h2 class="section-title">Little Memories ✨</h2>
 
-    <h2>Why you're <span class="gold">special</span></h2>
+    <p class="section-text">
+      Every beautiful story is made from small moments.
+      Here are a few places reserved for our favourite memories.
+    </p>
 
-    <div class="card-container">
+    <div class="memories">
 
-      <div class="card">
-        <span>✨</span>
-        <h3>Your Presence</h3>
-        <p>Some people simply make ordinary moments feel better.</p>
+      <div class="memory">
+        <div class="memory-icon">🌙</div>
+        <h3>That One Moment</h3>
+        <p>
+          A memory worth keeping forever.
+        </p>
       </div>
 
-      <div class="card">
-        <span>🤍</span>
-        <h3>Your Heart</h3>
-        <p>The kindness and care you show to people matters more than you know.</p>
+      <div class="memory">
+        <div class="memory-icon">✨</div>
+        <h3>Something Special</h3>
+        <p>
+          Some moments simply stay with us.
+        </p>
       </div>
 
-      <div class="card">
-        <span>🌙</span>
-        <h3>Your Little Things</h3>
-        <p>Sometimes it's the smallest things that become the biggest memories.</p>
-      </div>
-
-      <div class="card">
-        <span>🫶</span>
-        <h3>Your Smile</h3>
-        <p>One of those little things that can instantly make a moment brighter.</p>
+      <div class="memory">
+        <div class="memory-icon">💫</div>
+        <h3>A Beautiful Day</h3>
+        <p>
+          One of those memories that deserves its own place.
+        </p>
       </div>
 
     </div>
 
-    <button onclick="showSection('letter')">
-      There's a letter for you →
-    </button>
-
   </div>
 </section>
 
-
 <!-- LETTER -->
-<section class="page hidden" id="letter">
-  <div class="content fade">
+<section>
+  <div class="container">
 
-    <div class="small">A few words from me</div>
+    <div class="small">Chapter Two</div>
 
-    <h2>For <span class="gold">you 🤍</span></h2>
+    <h2 class="section-title">A Little Letter 💌</h2>
 
     <div class="letter">
 
+      <p>Dear Ruqia,</p>
+
       <p>
-        Happy Birthday, Ruqiya. ❤️
+        Today is your special day, and I wanted to create something
+        a little different instead of simply saying “Happy Birthday.”
       </p>
 
       <p>
-        I hope this new year of your life brings you countless reasons
-        to smile, peaceful days, beautiful memories and all the happiness
-        you quietly wish for.
+        I hope this new year of your life brings you peaceful moments,
+        beautiful memories, plenty of reasons to smile, and everything
+        you genuinely wish for.
       </p>
 
       <p>
-        You deserve to be appreciated not only on your birthday,
-        but on all those normal days when nobody says it out loud.
+        Keep being yourself, keep smiling, and keep making ordinary
+        days a little brighter.
       </p>
 
       <p>
-        May Allah protect you, keep you happy, give you success in
-        everything good you work for, and fill your life with peace
-        and blessings. Ameen. 🤍
-      </p>
-
-      <p>
-        And now… there's just one last thing waiting for you.
+        Happy Birthday. 🎂✨
       </p>
 
     </div>
 
-    <button onclick="showSection('gift')">
-      One Last Surprise 🎁
-    </button>
-
   </div>
 </section>
-
 
 <!-- GIFT -->
-<section class="page hidden" id="gift">
-  <div class="content fade">
+<section>
+  <div class="container">
 
-    <div class="small">One last thing</div>
+    <div class="small">One Last Thing</div>
 
-    <h2>Tap the <span class="gold">gift</span></h2>
+    <h2 class="section-title">There's a Gift 🎁</h2>
 
-    <div class="gift" onclick="openGift()">🎁</div>
+    <p class="section-text">
+      Tap the gift. Something is waiting inside.
+    </p>
 
-    <div id="finalMessage" class="hidden">
+    <div class="gift" onclick="openGift()">
+      🎁
+    </div>
 
-      <h2 class="gold">For your birthday… 🤍</h2>
-
-      <p>
-        May every coming chapter of your life be more beautiful
-        than the one before it.
-        May your smile never lose its reason,
-        and may Allah always keep you surrounded by happiness,
-        peace and people who genuinely care about you.
-      </p>
-
-      <p style="margin-top:20px;">
-        Happy Birthday once again. 🎂✨
-      </p>
-
-      <div class="footer">
-        Made specially for you ❤️
-      </div>
-
+    <div id="giftMessage" class="gift-message">
+      ✨ Surprise! ✨<br><br>
+      You deserve a beautiful birthday,
+      today and every year ahead. 🎂🤍
     </div>
 
   </div>
 </section>
 
+<!-- FINAL -->
+<section class="final">
+  <div class="container">
+
+    <div class="final-heart">🤍</div>
+
+    <div class="small">The End</div>
+
+    <h2 class="section-title">
+      Happy Birthday, Ruqia ✨
+    </h2>
+
+    <p class="subtitle">
+      May this year bring you countless beautiful moments,
+      peaceful days and reasons to smile.
+    </p>
+
+    <p style="margin-top:35px;color:#777b8a;">
+      Made with care ✨
+    </p>
+
+  </div>
+</section>
+
+<div class="footer">
+  © Birthday Surprise • Midnight Elegance 🌌
+</div>
 
 <script>
-
-function showSection(id){
-
-  document.querySelectorAll(".page").forEach(function(section){
-    section.classList.add("hidden");
-  });
-
-  document.getElementById(id).classList.remove("hidden");
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-}
-
 function openGift(){
 
-  document.getElementById("finalMessage").classList.remove("hidden");
+  const message = document.getElementById("giftMessage");
 
-  document.querySelector(".gift").style.transform =
-    "scale(1.2) rotate(5deg)";
+  message.classList.toggle("show");
+
+  if(message.classList.contains("show")){
+    document.querySelector(".gift").innerHTML = "💝";
+  }else{
+    document.querySelector(".gift").innerHTML = "🎁";
+  }
+
 }
-
 </script>
 
 </body>
-  </html>
+</html>
