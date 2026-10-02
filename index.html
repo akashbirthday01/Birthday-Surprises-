@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,16 +7,338 @@
 <title>For Ruqia ✨</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html{
-  scroll-behavior:smooth;
+html {
+  scroll-behavior: smooth;
 }
 
+body {
+  background: #050711;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  overflow-x: hidden;
+}
+
+/* Stars */
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,220,150,.5) 1px, transparent 1px);
+  background-size: 90px 90px, 150px 150px;
+  background-position: 10px 20px, 50px 80px;
+  opacity: .35;
+}
+
+/* Music player */
+.music-player {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 100;
+}
+
+#musicBtn {
+  padding: 11px 17px;
+  border: 1px solid rgba(255,220,150,.6);
+  border-radius: 30px;
+  color: #fff5d0;
+  background: rgba(5,7,17,.9);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(255,220,150,.12);
+}
+
+#musicBtn:hover {
+  background: rgba(255,220,150,.12);
+}
+
+/* Main */
+section {
+  min-height: 100vh;
+  padding: 80px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  width: 100%;
+  max-width: 850px;
+  text-align: center;
+}
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at center, rgba(35,45,100,.35), transparent 55%);
+}
+
+.small {
+  color: #d8c58a;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-size: clamp(45px,12vw,90px);
+  font-weight: 400;
+  line-height: 1.05;
+  margin-bottom: 25px;
+  text-shadow: 0 0 30px rgba(255,255,255,.18);
+}
+
+.glow {
+  color: #fff4c7;
+  text-shadow:
+    0 0 10px rgba(255,230,150,.6),
+    0 0 35px rgba(255,220,130,.3);
+}
+
+.subtitle {
+  font-size: 19px;
+  line-height: 1.8;
+  color: #d5d5df;
+  max-width: 600px;
+  margin: auto;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 35px;
+  padding: 14px 28px;
+  border: 1px solid rgba(255,220,150,.6);
+  border-radius: 50px;
+  color: #fff5d0;
+  text-decoration: none;
+  background: rgba(255,255,255,.04);
+  transition: .3s;
+}
+
+.btn:hover {
+  background: rgba(255,220,150,.12);
+  transform: translateY(-3px);
+}
+
+/* Headings */
+.section-title {
+  font-size: 42px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.section-text {
+  color: #bfc0ca;
+  line-height: 1.9;
+  font-size: 17px;
+}
+
+/* Memories */
+.memories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 18px;
+  margin-top: 40px;
+}
+
+.memory {
+  min-height: 230px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 22px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,.06),
+    rgba(255,255,255,.015)
+  );
+  box-shadow: 0 10px 40px rgba(0,0,0,.25);
+  transition: .35s;
+}
+
+.memory img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 18px;
+}
+
+.memory:hover {
+  transform: translateY(-7px);
+  border-color: rgba(255,220,150,.35);
+}
+
+.memory-icon {
+  font-size: 42px;
+  margin-bottom: 18px;
+}
+
+.memory h3 {
+  color: #fff1bf;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.memory p {
+  color: #aaaeba;
+  line-height: 1.6;
+}
+
+/* Letter */
+.letter {
+  margin-top: 40px;
+  padding: 35px 28px;
+  border-radius: 25px;
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(255,220,150,.18);
+  box-shadow: 0 0 50px rgba(20,30,80,.25);
+  text-align: left;
+}
+
+.letter p {
+  color: #d5d5df;
+  line-height: 2;
+  font-size: 17px;
+  margin-bottom: 18px;
+}
+
+/* Gift */
+.gift {
+  margin: 40px auto 0;
+  width: 170px;
+  height: 170px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  cursor: pointer;
+  background: linear-gradient(145deg,#171b35,#0b0e1c);
+  border: 1px solid rgba(255,220,150,.3);
+  box-shadow: 0 0 35px rgba(255,220,150,.12);
+  transition: .4s;
+}
+
+.gift:hover {
+  transform: scale(1.06) rotate(2deg);
+}
+
+.gift-message {
+  display: none;
+  margin-top: 30px;
+  font-size: 20px;
+  color: #fff0bb;
+  line-height: 1.8;
+}
+
+.gift-message.show {
+  display: block;
+  animation: fadeUp .8s ease;
+}
+
+/* Final */
+.final {
+  background:
+    radial-gradient(circle at center,
+    rgba(75,60,120,.28),
+    transparent 60%);
+}
+
+.final-heart {
+  font-size: 70px;
+  margin-bottom: 20px;
+  animation: pulse 2s infinite;
+}
+
+.footer {
+  padding: 30px 20px;
+  text-align: center;
+  color: #777b8a;
+  font-size: 13px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%,100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade {
+  animation: fadeUp 1.2s ease;
+}
+
+/* Mobile */
+@media(max-width:600px) {
+  section {
+    padding: 70px 18px;
+  }
+
+  .section-title {
+    font-size: 34px;
+  }
+
+  .letter {
+    padding: 28px 20px;
+  }
+
+  .letter p {
+    font-size: 16px;
+  }
+
+  .music-player {
+    top: 10px;
+    right: 10px;
+  }
+
+  #musicBtn {
+    padding: 9px 13px;
+    font-size: 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<!-- MUSIC PLAYER -->
 <div class="music-player">
   <audio id="bgMusic" loop>
     <source src="Sitaare%20Ikkis%20128%20Kbps.mp3" type="audio/mpeg">
@@ -26,308 +349,9 @@ html{
   </button>
 </div>
 
-<script>
-  function toggleMusic() {
-    const music = document.getElementById("bgMusic");
-    const btn = document.getElementById("musicBtn");
-
-    if (music.paused) {
-      music.play().then(() => {
-        btn.textContent = "⏸ Pause Music";
-      }).catch(() => {
-        btn.textContent = "🎵 Tap to Play Music";
-      });
-    } else {
-      music.pause();
-      btn.textContent = "🎵 Play Music";
-    }
-  }
-</script>
-
-body{
-  background:#050711;
-  color:#fff;
-  font-family:Georgia, "Times New Roman", serif;
-  overflow-x:hidden;
-}
-
-/* Stars */
-.stars{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px),
-    radial-gradient(circle, rgba(255,220,150,.5) 1px, transparent 1px);
-  background-size:90px 90px, 150px 150px;
-  background-position:10px 20px, 50px 80px;
-  opacity:.35;
-}
-
-/* Main */
-section{
-  min-height:100vh;
-  padding:80px 22px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  z-index:1;
-}
-
-.container{
-  width:100%;
-  max-width:850px;
-  text-align:center;
-}
-
-/* Hero */
-.hero{
-  min-height:100vh;
-  background:
-    radial-gradient(circle at center, rgba(35,45,100,.35), transparent 55%);
-}
-
-.small{
-  color:#d8c58a;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  font-size:12px;
-  margin-bottom:25px;
-}
-
-h1{
-  font-size:clamp(45px,12vw,90px);
-  font-weight:400;
-  line-height:1.05;
-  margin-bottom:25px;
-  text-shadow:0 0 30px rgba(255,255,255,.18);
-}
-
-.glow{
-  color:#fff4c7;
-  text-shadow:
-    0 0 10px rgba(255,230,150,.6),
-    0 0 35px rgba(255,220,130,.3);
-}
-
-.subtitle{
-  font-size:19px;
-  line-height:1.8;
-  color:#d5d5df;
-  max-width:600px;
-  margin:auto;
-}
-
-.btn{
-  display:inline-block;
-  margin-top:35px;
-  padding:14px 28px;
-  border:1px solid rgba(255,220,150,.6);
-  border-radius:50px;
-  color:#fff5d0;
-  text-decoration:none;
-  background:rgba(255,255,255,.04);
-  transition:.3s;
-}
-
-.btn:hover{
-  background:rgba(255,220,150,.12);
-  transform:translateY(-3px);
-}
-
-/* Headings */
-.section-title{
-  font-size:42px;
-  font-weight:400;
-  margin-bottom:20px;
-}
-
-.section-text{
-  color:#bfc0ca;
-  line-height:1.9;
-  font-size:17px;
-}
-
-/* Memories */
-.memories{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
-  margin-top:40px;
-}
-
-.memory{
-  min-height:230px;
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:22px;
-  padding:30px 20px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  background:linear-gradient(
-    145deg,
-    rgba(255,255,255,.06),
-    rgba(255,255,255,.015)
-  );
-  box-shadow:0 10px 40px rgba(0,0,0,.25);
-  transition:.35s;
-} 
-.memory img{
-.memory:hover{
-  transform:translateY(-7px);
-  border-color:rgba(255,220,150,.35);
-}
-
-.memory-icon{
-  font-size:42px;
-  margin-bottom:18px;
-}
-
-.memory h3{
-  color:#fff1bf;
-  margin-bottom:10px;
-  font-size:20px;
-  font-weight:400;
-}
-
-.memory p{
-  color:#aaaeba;
-  line-height:1.6;
-}
-
-/* Letter */
-.letter{
-  margin-top:40px;
-  padding:35px 28px;
-  border-radius:25px;
-  background:rgba(255,255,255,.035);
-  border:1px solid rgba(255,220,150,.18);
-  box-shadow:0 0 50px rgba(20,30,80,.25);
-  text-align:left;
-}
-
-.letter p{
-  color:#d5d5df;
-  line-height:2;
-  font-size:17px;
-  margin-bottom:18px;
-}
-
-/* Gift */
-.gift{
-  margin:40px auto 0;
-  width:170px;
-  height:170px;
-  border-radius:30px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:80px;
-  cursor:pointer;
-  background:linear-gradient(145deg,#171b35,#0b0e1c);
-  border:1px solid rgba(255,220,150,.3);
-  box-shadow:0 0 35px rgba(255,220,150,.12);
-  transition:.4s;
-}
-
-.gift:hover{
-  transform:scale(1.06) rotate(2deg);
-}
-
-.gift-message{
-  display:none;
-  margin-top:30px;
-  font-size:20px;
-  color:#fff0bb;
-  line-height:1.8;
-}
-
-.gift-message.show{
-  display:block;
-  animation:fadeUp .8s ease;
-}
-
-/* Final */
-.final{
-  background:
-    radial-gradient(circle at center,
-    rgba(75,60,120,.28),
-    transparent 60%);
-}
-
-.final-heart{
-  font-size:70px;
-  margin-bottom:20px;
-  animation:pulse 2s infinite;
-}
-
-.footer{
-  padding:30px 20px;
-  text-align:center;
-  color:#777b8a;
-  font-size:13px;
-  position:relative;
-  z-index:1;
-}
-
-/* Animations */
-@keyframes pulse{
-  0%,100%{
-    transform:scale(1)
-  }
-
-  50%{
-    transform:scale(1.12)
-  }
-}
-
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(20px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-.fade{
-  animation:fadeUp 1.2s ease;
-}
-
-/* Mobile */
-@media(max-width:600px){
-  section{
-    padding:70px 18px;
-  }
-
-  .section-title{
-    font-size:34px;
-  }
-
-  .letter{
-    padding:28px 20px;
-  }
-
-  .letter p{
-    font-size:16px;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<div class="stars"></div>
-
 <!-- HERO -->
 <section class="hero">
   <div class="container fade">
-
     <div class="small">A little surprise for you</div>
 
     <h1>
@@ -341,14 +365,12 @@ h1{
     </p>
 
     <a href="#memories" class="btn">Begin the surprise ↓</a>
-
   </div>
 </section>
 
 <!-- MEMORIES -->
 <section id="memories">
   <div class="container">
-
     <div class="small">Chapter One</div>
 
     <h2 class="section-title">Little Memories ✨</h2>
@@ -360,50 +382,48 @@ h1{
 
     <div class="memories">
 
-<div class="memory">
-  <img src="Screenshot_20261001_134701_Gallery.jpg" alt="A special memory">
-  <h3>A Little Piece of Happiness</h3>
-  <p>Your smile makes ordinary moments special. ✨</p>
-</div>
+      <div class="memory">
+        <img src="Screenshot_20261001_134701_Gallery.jpg" alt="A special memory">
+        <h3>A Little Piece of Happiness</h3>
+        <p>Your smile makes ordinary moments special. ✨</p>
+      </div>
 
-<div class="memory">
-  <img src="Screenshot_20261001_134743_Gallery.jpg" alt="A cherished moment">
-  <h3>Beautiful Soul</h3>
-  <p>Some people make life brighter just by being in it. 💖</p>
-</div>
+      <div class="memory">
+        <img src="Screenshot_20261001_134743_Gallery.jpg" alt="A cherished moment">
+        <h3>Beautiful Soul</h3>
+        <p>Some people make life brighter just by being in it. 💖</p>
+      </div>
 
-<div class="memory">
-  <img src="Screenshot_20261001_134751_Gallery.jpg" alt="A lovely memory">
-  <h3>Our Little World</h3>
-  <p>Every moment together becomes a memory to treasure. 🌙</p>
-</div>
+      <div class="memory">
+        <img src="Screenshot_20261001_134751_Gallery.jpg" alt="A lovely memory">
+        <h3>Our Little World</h3>
+        <p>Every moment together becomes a memory to treasure. 🌙</p>
+      </div>
 
-<div class="memory">
-  <img src="Screenshot_20261001_140012_WhatsApp.jpg" alt="A sweet memory">
-  <h3>Unforgettable Moments</h3>
-  <p>Some memories will always have a special place in my heart. 💫</p>
-</div>
+      <div class="memory">
+        <img src="Screenshot_20261001_140012_WhatsApp.jpg" alt="A sweet memory">
+        <h3>Unforgettable Moments</h3>
+        <p>Some memories will always have a special place in my heart. 💫</p>
+      </div>
 
-<div class="memory">
-  <img src="Screenshot_20261001_140025_WhatsApp.jpg" alt="A precious moment">
-  <h3>My Favourite Memories</h3>
-  <p>Here's to all the little moments that mean so much. ❤️</p>
-</div>
+      <div class="memory">
+        <img src="Screenshot_20261001_140025_WhatsApp.jpg" alt="A precious moment">
+        <h3>My Favourite Memories</h3>
+        <p>Here's to all the little moments that mean so much. ❤️</p>
+      </div>
 
+    </div>
   </div>
 </section>
 
 <!-- LETTER -->
 <section>
   <div class="container">
-
     <div class="small">Chapter Two</div>
 
     <h2 class="section-title">A Little Letter 💌</h2>
 
     <div class="letter">
-
-      
       <p>Meri Jaan, Meri Shehzadii! 💗👑</p>
 
       <p>
@@ -459,14 +479,13 @@ h1{
       </p>
 
       <p>Hamesha tumhara pagal sa bacha 💗</p>
-
+    </div>
   </div>
 </section>
 
 <!-- GIFT -->
 <section>
   <div class="container">
-
     <div class="small">One Last Thing</div>
 
     <h2 class="section-title">There's a Gift 🎁</h2>
@@ -480,26 +499,24 @@ h1{
     </div>
 
     <div id="giftMessage" class="gift-message">
+      🎀 Surprise meri Shehzadii! 🎀<br><br>
 
-  🎀 Surprise meri Shehzadii! 🎀<br><br>
+      Happy Birthday meri jaan, meri moto Pyri,
+      meri pyari si bacha! 🥹💗<br><br>
 
-  Happy Birthday meri jaan, meri moto Pyri,
-  meri pyari si bacha! 🥹💗<br><br>
+      Umeed hai aapka aaj ka din aapki
+      smile ki tarah khoobsurat ho. Hamesha
+      khush rehna, meri jaan, aur aise hi
+      hansti muskurati rehna. 😭❤️<br><br>
 
-  Umeed hai aapka aaj ka din aapki
-  smile ki tarah khoobsurat ho. Hamesha
-  khush rehna, meri jaan, aur aise hi
-  hansti muskurati rehna. 😭❤️<br><br>
-
-  Tum bohat special ho, meri Shehzadii! 👑🎂✨
-</div>
+      Tum bohat special ho, meri Shehzadii! 👑🎂✨
+    </div>
   </div>
 </section>
 
 <!-- FINAL -->
 <section class="final">
   <div class="container">
-
     <div class="final-heart">🤍</div>
 
     <div class="small">The End</div>
@@ -516,7 +533,6 @@ h1{
     <p style="margin-top:35px;color:#777b8a;">
       Made with care ✨
     </p>
-
   </div>
 </section>
 
@@ -525,18 +541,33 @@ h1{
 </div>
 
 <script>
-function openGift(){
+function toggleMusic() {
+  const music = document.getElementById("bgMusic");
+  const btn = document.getElementById("musicBtn");
 
+  if (music.paused) {
+    music.play().then(() => {
+      btn.textContent = "⏸ Pause Music";
+    }).catch(() => {
+      btn.textContent = "🎵 Tap to Play Music";
+    });
+  } else {
+    music.pause();
+    btn.textContent = "🎵 Play Music";
+  }
+}
+
+function openGift() {
   const message = document.getElementById("giftMessage");
+  const gift = document.querySelector(".gift");
 
   message.classList.toggle("show");
 
-  if(message.classList.contains("show")){
-    document.querySelector(".gift").innerHTML = "💝";
-  }else{
-    document.querySelector(".gift").innerHTML = "🎁";
+  if (message.classList.contains("show")) {
+    gift.innerHTML = "💝";
+  } else {
+    gift.innerHTML = "🎁";
   }
-
 }
 </script>
 
