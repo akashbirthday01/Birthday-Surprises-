@@ -275,6 +275,105 @@ h1 {
   animation: fadeUp .8s ease both;
 }
 
+/* Open When */
+.open-when-section {
+  background: radial-gradient(circle at center, rgba(35,45,100,.18), transparent 65%);
+}
+
+.open-when-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  margin-top: 35px;
+}
+
+.open-when-card {
+  min-height: 145px;
+  padding: 22px 16px;
+  border: 1px solid rgba(255,220,150,.22);
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,.07), rgba(255,255,255,.015));
+  color: #fff1bf;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.6;
+  cursor: pointer;
+  transition: transform .3s ease, background .3s ease, border-color .3s ease;
+  animation: memoryEnter .8s ease both;
+}
+
+.open-when-card:nth-child(1) { animation-delay: .1s; }
+.open-when-card:nth-child(2) { animation-delay: .2s; }
+.open-when-card:nth-child(3) { animation-delay: .3s; }
+.open-when-card:nth-child(4) { animation-delay: .4s; }
+.open-when-card:nth-child(5) { animation-delay: .5s; }
+.open-when-card:nth-child(6) { animation-delay: .6s; }
+
+.open-when-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255,220,150,.6);
+  background: rgba(255,220,150,.09);
+}
+
+.open-when-card:focus-visible,
+.close-message:focus-visible {
+  outline: 2px solid #fff1bf;
+  outline-offset: 4px;
+}
+
+.open-when-card span {
+  display: block;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.open-when-message {
+  display: none;
+  margin-top: 28px;
+  padding: 30px 24px;
+  border: 1px solid rgba(255,220,150,.3);
+  border-radius: 22px;
+  background: rgba(255,255,255,.05);
+  box-shadow: 0 0 40px rgba(255,220,150,.08);
+  animation: fadeUp .6s ease both;
+}
+
+.open-when-message.show {
+  display: block;
+}
+
+.open-when-message h3 {
+  color: #fff1bf;
+  font-size: 23px;
+  font-weight: 400;
+  margin-bottom: 18px;
+}
+
+.open-when-message p {
+  color: #d5d5df;
+  font-size: 17px;
+  line-height: 1.9;
+  white-space: pre-line;
+}
+
+.close-message {
+  margin-top: 22px;
+  padding: 11px 22px;
+  border: 1px solid rgba(255,220,150,.5);
+  border-radius: 30px;
+  color: #fff5d0;
+  background: rgba(255,255,255,.04);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.close-message:hover {
+  background: rgba(255,220,150,.12);
+  transform: translateY(-2px);
+}
+
 /* Final */
 .final {
   background:
@@ -391,6 +490,25 @@ h1 {
 
   .memory {
     padding: 24px 16px;
+  }
+
+  .open-when-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .open-when-card {
+    min-height: 130px;
+    padding: 18px 10px;
+    font-size: 14px;
+  }
+
+  .open-when-message {
+    padding: 25px 18px;
+  }
+
+  .open-when-message p {
+    font-size: 16px;
   }
 }
 
@@ -588,6 +706,60 @@ h1 {
   </div>
 </section>
 
+<!-- OPEN WHEN -->
+<section class="open-when-section" id="open-when">
+  <div class="container">
+    <div class="small">A Few Little Messages</div>
+
+    <h2 class="section-title">Open When... 💌</h2>
+
+    <p class="section-text">
+      A few little words for different moments.
+      Choose one whenever you feel like it. 💗
+    </p>
+
+    <div class="open-when-grid">
+      <button class="open-when-card" onclick="openWhen('sad')">
+        <span>🥹</span>
+        Open when you're sad
+      </button>
+
+      <button class="open-when-card" onclick="openWhen('miss')">
+        <span>💗</span>
+        Open when you miss me
+      </button>
+
+      <button class="open-when-card" onclick="openWhen('bad')">
+        <span>🌧️</span>
+        Open when you're having a bad day
+      </button>
+
+      <button class="open-when-card" onclick="openWhen('laugh')">
+        <span>😂</span>
+        Open when you need a laugh
+      </button>
+
+      <button class="open-when-card" onclick="openWhen('sleep')">
+        <span>🌙</span>
+        Open before you sleep
+      </button>
+
+      <button class="open-when-card" onclick="openWhen('birthday')">
+        <span>🎂</span>
+        Open on your birthday
+      </button>
+    </div>
+
+    <div class="open-when-message" id="openWhenMessage" aria-live="polite">
+      <h3 id="openWhenTitle"></h3>
+      <p id="openWhenText"></p>
+      <button class="close-message" onclick="closeWhen()">
+        ← Back to cards
+      </button>
+    </div>
+  </div>
+</section>
+
 <!-- FINAL -->
 <section class="final">
   <div class="container">
@@ -642,6 +814,101 @@ function openGift() {
   } else {
     gift.innerHTML = "🎁";
   }
+}
+
+/* Open When Messages */
+const openWhenMessages = {
+  sad: {
+    title: "🥹 Open when you're sad",
+    text: `Meri pyari Ruqia! 💗
+
+Agar aaj tumhara dil udaas hai, toh sabse pehle ek gehri saans lena aur khud ko thora waqt dena. Tumhari feelings important hain, aur tumhein har waqt muskurate rehne ki zaroorat nahi.
+
+Kaash main is waqt tumhari baat sun sakta aur tumhara mood thora behtar karne ke liye koi funny si baat kar pata. 🥹
+
+Yaad rakhna, ek bura din tumhari poori zindagi ko define nahi karta. Apna khayal rakhna, meri shehzadii. I hope tum jald hi dil se muskurao. ❤️🫶🏻`
+  },
+
+  miss: {
+    title: "💗 Open when you miss me",
+    text: `Meri jaan! 🥹💕
+
+Agar tum mujhe miss kar rahi ho, toh hamari pyari pyari baatein aur woh funny moments yaad kar lena jin par hum dono hanse thay.
+
+Faasla chahe jitna bhi ho, achhi memories hamesha dil ke qareeb rehti hain. Jab hum dono free hon, toh araam se baat karenge aur phir se koi nayi memory banayenge. 💗
+
+Aur haan, apni cute si smile ko miss mat karna! 😂❤️`
+  },
+
+  bad: {
+    title: "🌧️ Open when you're having a bad day",
+    text: `Meri Shehzadii! 👑💗
+
+Pata hai, kabhi kabhi din hamari umeed ke mutabiq nahi guzarta. Kuch baatein pareshan karti hain aur kabhi chhoti chhoti cheezein bhi mushkil lagne lagti hain.
+
+Aise waqt mein khud par zyada pressure mat lena. Thora rest karna, apni favourite cheez karna aur kisi apne se baat kar lena.
+
+Tumhein sab kuch ek hi din mein theek karne ki zaroorat nahi. Step by step sab handle ho sakta hai. I hope tumhara agla din sukoon aur khushiyon se bhara ho. 🌷❤️`
+  },
+
+  laugh: {
+    title: "😂 Open when you need a laugh",
+    text: `OYYYY MERI MOTO! 😂😭💗
+
+Kya hua meri shehzadii? Kis ne meri princess ka mood off kar diya? 👀😂
+
+Official announcement: Aapko foran ek smile dene ki request ki jaati hai! Yeh message parhne ke baad thora sa hansna compulsory hai. 🤣
+
+Agar phir bhi smile nahi aayi, toh apni koi funny si baat ya reel share kar dena. Phir mil kar hansenge.
+
+Chalo ab ek pyari si smile do! 😭😂💕`
+  },
+
+  sleep: {
+    title: "🌙 Open before you sleep",
+    text: `Good night, meri pyari Ruqia! 🌙💗
+
+Aaj jo bhi hua, ab thora araam karne ka waqt hai. Saari pareshaniyan filhaal side par rakh do aur apne aap ko relax karne do.
+
+I hope tumhari raat peaceful ho, tumhein achhe khwab aayen aur subah tum ek fresh smile ke saath utho.
+
+Apna khayal rakhna, meri jaan. Sweet dreams, meri shehzadii! 🥹🫶🏻🌷`
+  },
+
+  birthday: {
+    title: "🎂 Open on your birthday",
+    text: `HAPPIEST BIRTHDAY, MERI JAAN! 🥹🎂💗
+
+Aaj ka din bohat special hai, kyun ke aaj meri pyari Ruqia ka birthday hai! 👑✨
+
+Meri dua hai ke tumhari zindagi khushiyon, sukoon, kamyabiyon aur khoobsurat lamhon se bhari rahe. Tumhare achhe khwab poore hon aur tum hamesha apne aap par yaqeen rakho.
+
+Thank you for all the smiles, lovely conversations and beautiful memories. Tumhari khushi aur tumhara sukoon bohat important hain.
+
+Aaj ka din dil khol kar enjoy karna, meri shehzadii! Hamesha khush raho aur hansti muskurati raho.
+
+HAPPY BIRTHDAY ONCE AGAIN, RUQIA! 🎂👑💗✨`
+  }
+};
+
+function openWhen(type) {
+  const item = openWhenMessages[type];
+  if (!item) return;
+
+  document.getElementById("openWhenTitle").textContent = item.title;
+  document.getElementById("openWhenText").textContent = item.text;
+
+  const panel = document.getElementById("openWhenMessage");
+  panel.classList.add("show");
+  panel.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+function closeWhen() {
+  document.getElementById("openWhenMessage").classList.remove("show");
+  document.getElementById("open-when").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
 }
 </script>
 
