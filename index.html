@@ -16,6 +16,34 @@ html{
   scroll-behavior:smooth;
 }
 
+<div class="music-player">
+  <audio id="bgMusic" loop>
+    <source src="Sitaare%20Ikkis%20128%20Kbps.mp3" type="audio/mpeg">
+  </audio>
+
+  <button id="musicBtn" onclick="toggleMusic()">
+    🎵 Play Music
+  </button>
+</div>
+
+<script>
+  function toggleMusic() {
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("musicBtn");
+
+    if (music.paused) {
+      music.play().then(() => {
+        btn.textContent = "⏸ Pause Music";
+      }).catch(() => {
+        btn.textContent = "🎵 Tap to Play Music";
+      });
+    } else {
+      music.pause();
+      btn.textContent = "🎵 Play Music";
+    }
+  }
+</script>
+
 body{
   background:#050711;
   color:#fff;
