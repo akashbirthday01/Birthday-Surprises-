@@ -18,7 +18,6 @@ body {
   overflow-x: hidden;
 }
 
-/* STAR BACKGROUND */
 .stars {
   position: fixed;
   inset: 0;
@@ -144,6 +143,7 @@ h1 { font-size: clamp(45px,12vw,90px); font-weight: 400; line-height: 1.05; marg
   display: block; width: 100%; height: auto; max-height: 420px;
   object-fit: contain; border-radius: 14px; margin-bottom: 18px;
   transition: transform .4s ease, filter .4s ease;
+  cursor: zoom-in;
 }
 .memory:hover { transform: translateY(-7px); border-color: rgba(255,220,150,.35); box-shadow: 0 15px 45px rgba(255,220,150,.08); }
 .memory:hover img { transform: scale(1.03); filter: brightness(1.08); }
@@ -151,7 +151,7 @@ h1 { font-size: clamp(45px,12vw,90px); font-weight: 400; line-height: 1.05; marg
 .memory h3 { color: #fff1bf; margin-bottom: 10px; font-size: 20px; font-weight: 400; }
 .memory p { color: #aaaeba; line-height: 1.6; }
 
-/* NEW FLOATING PHOTO SECTION */
+/* FLOATING PHOTO BUBBLES */
 .floating-memory-section {
   position: relative;
   overflow: hidden;
@@ -160,23 +160,16 @@ h1 { font-size: clamp(45px,12vw,90px); font-weight: 400; line-height: 1.05; marg
 }
 .floating-memory-section .container { position: relative; z-index: 2; }
 .floating-memory-field {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 1;
+  position: absolute; inset: 0; overflow: hidden;
+  pointer-events: none; z-index: 1;
 }
 .floating-photo {
-  position: absolute;
-  bottom: -140px;
-  width: clamp(62px, 16vw, 100px);
-  height: clamp(62px, 16vw, 100px);
-  object-fit: cover;
-  border-radius: 50%;
+  position: absolute; bottom: -140px;
+  width: clamp(62px, 16vw, 100px); height: clamp(62px, 16vw, 100px);
+  object-fit: cover; border-radius: 50%;
   border: 2px solid rgba(255,220,150,.8);
   box-shadow: 0 0 15px rgba(255,220,150,.28), 0 0 30px rgba(190,150,255,.14);
-  opacity: 0;
-  animation: floatingPhotoRise 16s linear infinite;
+  opacity: 0; animation: floatingPhotoRise 16s linear infinite;
   will-change: transform, opacity;
 }
 @keyframes floatingPhotoRise {
@@ -222,6 +215,20 @@ h1 { font-size: clamp(45px,12vw,90px); font-weight: 400; line-height: 1.05; marg
 .letter p { position: relative; color: #d5d5df; line-height: 2; font-size: 17px; margin-bottom: 18px; }
 .letter p:first-child { color: #ffe6aa; font-size: 19px; }
 
+/* SECRET LETTER BUTTON */
+.secret-letter-btn {
+  margin-top: 22px; padding: 13px 23px; border-radius: 30px;
+  border: 1px solid rgba(255,220,150,.55); background: rgba(255,220,150,.06);
+  color: #fff0bd; font: 15px Georgia,serif; cursor: pointer; transition: .3s;
+}
+.secret-letter-btn:hover { background: rgba(255,220,150,.15); transform: translateY(-2px); }
+.secret-note {
+  display: none; margin-top: 22px; padding: 24px 20px; border-radius: 20px;
+  border: 1px solid rgba(255,220,150,.3); background: rgba(255,255,255,.04);
+  color: #ffe9b3; font-size: 19px; line-height: 1.9; text-align: center;
+}
+.secret-note.show { display: block; animation: letterReveal .9s ease both; }
+
 /* GIFT */
 .gift {
   position: relative; margin: 40px auto 0; width: 170px; height: 170px; border-radius: 30px;
@@ -243,6 +250,25 @@ h1 { font-size: clamp(45px,12vw,90px); font-weight: 400; line-height: 1.05; marg
   font-size: 20px; color: #fff0bb; line-height: 1.8;
 }
 .gift-message.show { display: block; animation: giftMessageReveal .9s ease both; }
+
+/* CINEMATIC COUNTDOWN */
+.countdown-overlay {
+  display: none; position: fixed; inset: 0; z-index: 800;
+  align-items: center; justify-content: center; flex-direction: column;
+  text-align: center; background: radial-gradient(circle, #211a36, #050711 70%);
+}
+.countdown-overlay.show { display: flex; animation: fadeUp .4s ease both; }
+.countdown-number {
+  font-size: clamp(90px, 25vw, 180px); color: #fff0b9;
+  text-shadow: 0 0 18px rgba(255,220,150,.9), 0 0 65px rgba(255,180,220,.45);
+  animation: countdownPop .85s ease both;
+}
+.countdown-caption { margin-top: 12px; color: #d8c58a; letter-spacing: 4px; font-size: 12px; text-transform: uppercase; }
+@keyframes countdownPop {
+  0% { transform: scale(.3); opacity: 0; filter: blur(10px); }
+  50% { transform: scale(1.12); opacity: 1; filter: blur(0); }
+  100% { transform: scale(1); opacity: 1; }
+}
 
 /* OPEN WHEN */
 .open-when-section { background: radial-gradient(circle at center,rgba(35,45,100,.18),transparent 65%); }
@@ -277,9 +303,74 @@ h1 { font-size: clamp(45px,12vw,90px); font-weight: 400; line-height: 1.05; marg
 }
 .close-message:hover { background: rgba(255,220,150,.12); transform: translateY(-2px); }
 
+/* REASONS UNDER THE STARS */
+.reasons-section {
+  background: radial-gradient(circle at center, rgba(90,65,130,.2), transparent 70%);
+}
+.reason-stars {
+  display: grid; grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 15px; margin-top: 35px;
+}
+.reason-star {
+  min-height: 120px; padding: 16px 10px; border-radius: 18px;
+  border: 1px solid rgba(255,220,150,.2); background: rgba(255,255,255,.035);
+  color: #fff0bd; font: 15px Georgia,serif; cursor: pointer;
+  transition: .3s; line-height: 1.5;
+}
+.reason-star span { display: block; font-size: 30px; margin-bottom: 8px; color: #ffe8a8; }
+.reason-star:hover { transform: translateY(-5px); border-color: rgba(255,220,150,.65); box-shadow: 0 0 28px rgba(255,220,150,.12); }
+.reason-output {
+  min-height: 90px; margin-top: 24px; padding: 22px;
+  border: 1px solid rgba(255,220,150,.25); border-radius: 20px;
+  background: rgba(255,255,255,.035); color: #ffe9b3; line-height: 1.9;
+  font-size: 18px;
+}
+
+/* PHOTO LIGHTBOX */
+.photo-lightbox {
+  display: none; position: fixed; inset: 0; z-index: 900;
+  background: rgba(2,3,10,.94); align-items: center; justify-content: center;
+  padding: 25px; flex-direction: column;
+}
+.photo-lightbox.show { display: flex; animation: fadeUp .25s ease both; }
+.photo-lightbox img {
+  max-width: min(92vw, 850px); max-height: 78vh; object-fit: contain;
+  border-radius: 14px; border: 1px solid rgba(255,220,150,.35);
+  box-shadow: 0 0 40px rgba(255,220,150,.12);
+}
+.lightbox-close {
+  position: absolute; top: 18px; right: 20px; width: 44px; height: 44px;
+  border: 1px solid rgba(255,220,150,.4); border-radius: 50%;
+  background: #101222; color: #fff0bd; font-size: 24px; cursor: pointer;
+}
+.lightbox-caption { margin-top: 16px; color: #e7d9ac; font-size: 15px; text-align: center; }
+
+/* GOLDEN TOUCH SPARKLES */
+#touchSparkles {
+  position: fixed; inset: 0; z-index: 700;
+  pointer-events: none; overflow: hidden;
+}
+.touch-spark {
+  position: absolute; color: #ffe5a1; font-size: 17px;
+  text-shadow: 0 0 10px rgba(255,220,150,.9);
+  animation: touchSparkRise .9s ease-out forwards;
+}
+@keyframes touchSparkRise {
+  0% { transform: translate(0,0) scale(.5) rotate(0); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translate(var(--dx),-65px) scale(1.3) rotate(90deg); opacity: 0; }
+}
+
 /* FINAL */
 .final { background: radial-gradient(circle at center,rgba(75,60,120,.28),transparent 60%); }
 .final-heart { font-size: 70px; margin-bottom: 20px; animation: pulse 2s infinite; }
+.final-message {
+  margin: 28px auto 0; max-width: 700px; min-height: 95px;
+  color: #fff0bd; font-size: clamp(22px, 5vw, 32px); line-height: 1.8;
+  text-shadow: 0 0 18px rgba(255,220,150,.35);
+}
+.final-signature { margin-top: 18px; color: #d8c58a; font-size: 17px; opacity: 0; }
+.final-signature.show { animation: fadeUp 1s ease forwards; }
 .footer { padding: 30px 20px; text-align: center; color: #777b8a; font-size: 13px; position: relative; z-index: 1; }
 
 /* ANIMATIONS */
@@ -325,6 +416,9 @@ h1 { font-size: clamp(45px,12vw,90px); font-weight: 400; line-height: 1.05; marg
   .intro-subtitle { font-size: 14px; }
   .intro-balloon { font-size: 36px; }
   .gift { width: 150px; height: 150px; font-size: 70px; }
+  .reason-stars { gap: 9px; }
+  .reason-star { font-size: 13px; min-height: 110px; padding: 12px 6px; }
+  .reason-star span { font-size: 25px; }
 }
 @media(prefers-reduced-motion:reduce) {
   *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
@@ -336,6 +430,7 @@ h1 { font-size: clamp(45px,12vw,90px); font-weight: 400; line-height: 1.05; marg
 
 <body>
 <div class="stars"></div>
+<div id="touchSparkles" aria-hidden="true"></div>
 
 <!-- OPENING SURPRISE -->
 <div class="intro-screen" id="introScreen" aria-label="Birthday surprise opening">
@@ -365,6 +460,19 @@ h1 { font-size: clamp(45px,12vw,90px); font-weight: 400; line-height: 1.05; marg
   <button id="musicBtn" onclick="toggleMusic()">🎵 Play Music</button>
 </div>
 
+<!-- CINEMATIC COUNTDOWN -->
+<div class="countdown-overlay" id="countdownOverlay" aria-live="polite">
+  <div class="countdown-number" id="countdownNumber">3</div>
+  <p class="countdown-caption">A little surprise for my Shehzadii</p>
+</div>
+
+<!-- PHOTO LIGHTBOX -->
+<div class="photo-lightbox" id="photoLightbox" role="dialog" aria-modal="true" aria-label="Memory photo">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close photo">×</button>
+  <img id="lightboxImage" src="" alt="Memory enlarged">
+  <p class="lightbox-caption">A little memory to keep forever ✨</p>
+</div>
+
 <!-- HERO -->
 <section class="hero">
   <div class="container fade">
@@ -383,27 +491,27 @@ h1 { font-size: clamp(45px,12vw,90px); font-weight: 400; line-height: 1.05; marg
     <p class="section-text">Every beautiful story is made from small moments. Here are a few places reserved for our favourite memories.</p>
     <div class="memories">
       <div class="memory">
-        <img src="Screenshot_20261001_134701_Gallery.jpg" alt="A special memory">
+        <img src="Screenshot_20261001_134701_Gallery.jpg" alt="A special memory" loading="lazy">
         <h3>A Little Piece of Happiness</h3>
         <p>Your smile makes ordinary moments special. ✨</p>
       </div>
       <div class="memory">
-        <img src="Screenshot_20261001_134743_Gallery.jpg" alt="A cherished moment">
+        <img src="Screenshot_20261001_134743_Gallery.jpg" alt="A cherished moment" loading="lazy">
         <h3>Beautiful Soul</h3>
         <p>Some people make life brighter just by being in it. 💖</p>
       </div>
       <div class="memory">
-        <img src="Screenshot_20261001_134751_Gallery.jpg" alt="A lovely memory">
+        <img src="Screenshot_20261001_134751_Gallery.jpg" alt="A lovely memory" loading="lazy">
         <h3>Our Little World</h3>
         <p>Every moment together becomes a memory to treasure. 🌙</p>
       </div>
       <div class="memory">
-        <img src="Screenshot_20261001_140012_WhatsApp.jpg" alt="A sweet memory">
+        <img src="Screenshot_20261001_140012_WhatsApp.jpg" alt="A sweet memory" loading="lazy">
         <h3>Unforgettable Moments</h3>
         <p>Some memories will always have a special place in my heart. 💫</p>
       </div>
       <div class="memory">
-        <img src="Screenshot_20261001_140025_WhatsApp.jpg" alt="A precious moment">
+        <img src="Screenshot_20261001_140025_WhatsApp.jpg" alt="A precious moment" loading="lazy">
         <h3>My Favourite Memories</h3>
         <p>Here's to all the little moments that mean so much. ❤️</p>
       </div>
@@ -411,7 +519,7 @@ h1 { font-size: clamp(45px,12vw,90px); font-weight: 400; line-height: 1.05; marg
   </div>
 </section>
 
-<!-- NEW FLOATING PHOTOS -->
+<!-- FLOATING PHOTOS -->
 <section class="floating-memory-section" id="floating-memories">
   <div class="floating-memory-field" aria-hidden="true">
     <img class="floating-photo" src="IMG-20260316-WA0002.jpg" alt="" loading="lazy">
@@ -460,6 +568,13 @@ h1 { font-size: clamp(45px,12vw,90px); font-weight: 400; line-height: 1.05; marg
       <p>I love you so much meri jaan! 🥹❤️👑</p>
       <p>Hamesha tumhara pagal sa bacha 💗</p>
     </div>
+
+    <button class="secret-letter-btn" onclick="toggleSecretLetter()" aria-expanded="false" id="secretLetterButton">
+      💌 Open a tiny secret
+    </button>
+    <div class="secret-note" id="secretNote">
+      Meri Shehzadii, agar mujhe dobara bhi ek choti si duniya banani ho na, toh usmein tumhari hansi, tumhari funny baatein aur hamari pyari memories zaroor rakhun. Tum jaisi ho, waise hi special ho. 💗👑
+    </div>
   </div>
 </section>
 
@@ -469,7 +584,7 @@ h1 { font-size: clamp(45px,12vw,90px); font-weight: 400; line-height: 1.05; marg
     <div class="small">One Last Thing</div>
     <h2 class="section-title">There's a Gift 🎁</h2>
     <p class="section-text">Tap the gift. Something is waiting inside.</p>
-    <div class="gift" role="button" tabindex="0" aria-label="Open birthday gift" aria-expanded="false" onclick="openGift()" onkeydown="giftKey(event)">🎁</div>
+    <div class="gift" id="birthdayGift" role="button" tabindex="0" aria-label="Open birthday gift" aria-expanded="false" onclick="openGift()" onkeydown="giftKey(event)">🎁</div>
     <div id="giftMessage" class="gift-message" aria-live="polite">
       🎀 Surprise meri Shehzadii! 🎀<br><br>
       Happy Birthday meri jaan, meri moto Pyri, meri pyari si bacha! 🥹💗<br><br>
@@ -501,13 +616,35 @@ h1 { font-size: clamp(45px,12vw,90px); font-weight: 400; line-height: 1.05; marg
   </div>
 </section>
 
+<!-- SPECIAL REASONS -->
+<section class="reasons-section" id="reasons">
+  <div class="container">
+    <div class="small">A Sky Full of Reasons</div>
+    <h2 class="section-title">Why You're Special ⭐</h2>
+    <p class="section-text">Meri Shehzadii, kisi star ko choose karo. Har star mein tumhare liye ek choti si baat hai. 💗</p>
+    <div class="reason-stars">
+      <button class="reason-star" onclick="showReason(0)"><span>✦</span>Star One</button>
+      <button class="reason-star" onclick="showReason(1)"><span>✧</span>Star Two</button>
+      <button class="reason-star" onclick="showReason(2)"><span>✦</span>Star Three</button>
+      <button class="reason-star" onclick="showReason(3)"><span>✧</span>Star Four</button>
+      <button class="reason-star" onclick="showReason(4)"><span>✦</span>Star Five</button>
+      <button class="reason-star" onclick="showReason(5)"><span>✧</span>Star Six</button>
+    </div>
+    <div class="reason-output" id="reasonOutput" aria-live="polite">
+      Tap any star to discover a little reason. ✨
+    </div>
+  </div>
+</section>
+
 <!-- FINAL -->
-<section class="final">
+<section class="final" id="finalSection">
   <div class="container">
     <div class="final-heart">🤍</div>
     <div class="small">The End</div>
     <h2 class="section-title">Happy Birthday, Ruqia ✨</h2>
     <p class="subtitle">May this year bring you countless beautiful moments, peaceful days and reasons to smile.</p>
+    <div class="final-message" id="finalMessage"></div>
+    <p class="final-signature" id="finalSignature">Hamesha tumhara pagal sa bacha 💗</p>
     <p style="margin-top:35px;color:#777b8a;">Made with care ✨</p>
   </div>
 </section>
@@ -532,6 +669,7 @@ function toggleMusic() {
 const introScreen = document.getElementById("introScreen");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let introClosed = false;
+
 function closeIntro() {
   if (introClosed) return;
   introClosed = true;
@@ -539,8 +677,12 @@ function closeIntro() {
   stopFireworks();
 }
 function skipIntro() { closeIntro(); }
-if (reducedMotion) { introScreen.style.display = "none"; }
-else { setTimeout(closeIntro, 5500); }
+
+if (reducedMotion) {
+  introScreen.style.display = "none";
+} else {
+  setTimeout(closeIntro, 5500);
+}
 
 /* LIGHTWEIGHT FIREWORKS */
 const canvas = document.getElementById("fireworks");
@@ -556,6 +698,7 @@ function resizeFireworks() {
   canvas.height = Math.floor(window.innerHeight * ratio);
   ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 }
+
 function createBurst(x, y) {
   const colors = ["#ffd98b", "#ffb5d5", "#c6a4ff", "#fff0c2"];
   const color = colors[Math.floor(Math.random() * colors.length)];
@@ -563,10 +706,14 @@ function createBurst(x, y) {
   for (let i = 0; i < count; i++) {
     const angle = (Math.PI * 2 * i) / count;
     const speed = 1 + Math.random() * 2.6;
-    particles.push({ x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
-      life: 45 + Math.random() * 25, maxLife: 70, color, size: 1 + Math.random() * 1.5 });
+    particles.push({
+      x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
+      life: 45 + Math.random() * 25, maxLife: 70,
+      color, size: 1 + Math.random() * 1.5
+    });
   }
 }
+
 function drawFireworks(time) {
   if (!fireworksRunning) return;
   const w = window.innerWidth, h = window.innerHeight;
@@ -577,36 +724,177 @@ function drawFireworks(time) {
   }
   particles = particles.filter(p => p.life > 0);
   for (const p of particles) {
-    p.x += p.vx; p.y += p.vy; p.vy += .025; p.vx *= .99; p.vy *= .99; p.life--;
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += .025;
+    p.vx *= .99;
+    p.vy *= .99;
+    p.life--;
     ctx.globalAlpha = Math.max(0, p.life / p.maxLife);
     ctx.fillStyle = p.color;
-    ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
   }
   ctx.globalAlpha = 1;
   fireworkFrame = requestAnimationFrame(drawFireworks);
 }
+
 function startFireworks() {
   if (reducedMotion || fireworksRunning) return;
-  fireworksRunning = true; resizeFireworks(); lastBurst = performance.now();
+  fireworksRunning = true;
+  resizeFireworks();
+  lastBurst = performance.now();
   fireworkFrame = requestAnimationFrame(drawFireworks);
 }
+
 function stopFireworks() {
-  fireworksRunning = false; cancelAnimationFrame(fireworkFrame); particles = [];
+  fireworksRunning = false;
+  cancelAnimationFrame(fireworkFrame);
+  particles = [];
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
-if (!reducedMotion) { startFireworks(); window.addEventListener("resize", resizeFireworks); }
 
-/* GIFT REVEAL */
-function openGift() {
-  const message = document.getElementById("giftMessage");
-  const gift = document.querySelector(".gift");
-  const isOpen = message.classList.toggle("show");
-  gift.classList.toggle("opened", isOpen);
-  gift.setAttribute("aria-expanded", String(isOpen));
-  gift.innerHTML = isOpen ? "💝" : "🎁";
+if (!reducedMotion) {
+  startFireworks();
+  window.addEventListener("resize", resizeFireworks);
 }
+
+/* GOLDEN MAGIC TOUCH */
+const touchSparkles = document.getElementById("touchSparkles");
+let lastTouchSpark = 0;
+
+function makeTouchSpark(x, y) {
+  if (reducedMotion) return;
+  const now = performance.now();
+  if (now - lastTouchSpark < 65) return;
+  lastTouchSpark = now;
+
+  const symbols = ["✦", "✧", "·", "✦"];
+  const spark = document.createElement("span");
+  spark.className = "touch-spark";
+  spark.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+  spark.style.left = (x - 8) + "px";
+  spark.style.top = (y - 8) + "px";
+  spark.style.setProperty("--dx", (Math.random() * 70 - 35) + "px");
+  touchSparkles.appendChild(spark);
+  spark.addEventListener("animationend", () => spark.remove(), { once: true });
+}
+
+document.addEventListener("pointerdown", event => {
+  makeTouchSpark(event.clientX, event.clientY);
+});
+
+/* SECRET LETTER */
+function toggleSecretLetter() {
+  const note = document.getElementById("secretNote");
+  const button = document.getElementById("secretLetterButton");
+  const isOpen = note.classList.toggle("show");
+  button.setAttribute("aria-expanded", String(isOpen));
+  button.textContent = isOpen ? "💗 Close secret message" : "💌 Open a tiny secret";
+}
+
+/* PHOTO LIGHTBOX */
+const photoLightbox = document.getElementById("photoLightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+
+document.querySelectorAll(".memory img").forEach(img => {
+  img.addEventListener("click", () => {
+    lightboxImage.src = img.src;
+    lightboxImage.alt = img.alt || "A special memory";
+    photoLightbox.classList.add("show");
+    document.body.style.overflow = "hidden";
+  });
+});
+
+function closeLightbox() {
+  photoLightbox.classList.remove("show");
+  document.body.style.overflow = "";
+  lightboxImage.src = "";
+}
+
+photoLightbox.addEventListener("click", event => {
+  if (event.target === photoLightbox) closeLightbox();
+});
+
+/* CINEMATIC COUNTDOWN + GIFT REVEAL */
+let giftOpened = false;
+let countdownRunning = false;
+
+function openGift() {
+  if (countdownRunning || giftOpened) {
+    if (giftOpened) {
+      const message = document.getElementById("giftMessage");
+      const gift = document.getElementById("birthdayGift");
+      const isOpen = message.classList.toggle("show");
+      gift.classList.toggle("opened", isOpen);
+      gift.setAttribute("aria-expanded", String(isOpen));
+      gift.innerHTML = isOpen ? "💝" : "🎁";
+    }
+    return;
+  }
+
+  countdownRunning = true;
+  const overlay = document.getElementById("countdownOverlay");
+  const number = document.getElementById("countdownNumber");
+  const captions = ["Get ready, meri jaan…", "Almost there, Shehzadii…", "Just for you 💗"];
+  const sequence = ["3", "2", "1", "💗"];
+  let index = 0;
+
+  overlay.classList.add("show");
+  number.textContent = sequence[0];
+  document.querySelector(".countdown-caption").textContent = captions[0];
+
+  if (reducedMotion) {
+    finishGiftCountdown();
+    return;
+  }
+
+  const timer = setInterval(() => {
+    index++;
+    if (index >= sequence.length) {
+      clearInterval(timer);
+      finishGiftCountdown();
+      return;
+    }
+    number.style.animation = "none";
+    void number.offsetWidth;
+    number.style.animation = "";
+    number.textContent = sequence[index];
+    document.querySelector(".countdown-caption").textContent =
+      captions[Math.min(index, captions.length - 1)];
+  }, 850);
+}
+
+function finishGiftCountdown() {
+  document.getElementById("countdownOverlay").classList.remove("show");
+  const message = document.getElementById("giftMessage");
+  const gift = document.getElementById("birthdayGift");
+
+  message.classList.add("show");
+  gift.classList.add("opened");
+  gift.setAttribute("aria-expanded", "true");
+  gift.innerHTML = "💝";
+  giftOpened = true;
+  countdownRunning = false;
+  createGiftSparkles();
+}
+
+function createGiftSparkles() {
+  const rect = document.getElementById("birthdayGift").getBoundingClientRect();
+  for (let i = 0; i < 8; i++) {
+    makeTouchSpark(
+      rect.left + rect.width / 2 + (Math.random() * 100 - 50),
+      rect.top + rect.height / 2 + (Math.random() * 100 - 50)
+    );
+  }
+}
+
 function giftKey(event) {
-  if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openGift(); }
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    openGift();
+  }
 }
 
 /* OPEN WHEN MESSAGES */
@@ -688,12 +976,82 @@ function openWhen(type) {
   panel.classList.add("show");
   panel.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
 }
+
 function closeWhen() {
   document.getElementById("openWhenMessage").classList.remove("show");
   document.getElementById("open-when").scrollIntoView({
     behavior: reducedMotion ? "auto" : "smooth", block: "start"
   });
 }
+
+/* A SKY FULL OF REASONS */
+const reasons = [
+  "Tumhari smile ordinary se din ko bhi thora special bana deti hai. ✨",
+  "Tumhari choti choti funny baatein aur cute si harkatein yaad reh jaati hain. 😂💗",
+  "Tumse baat karke din ke beech mein bhi ek pyara sa moment mil jata hai. 🥹",
+  "Tumhari apni ek alag hi personality hai — aur woh bohat special hai. 👑",
+  "Hamari nok-jhok aur funny memories hamari kahani ko apna sa banati hain. 🌙",
+  "Sab se important baat: tum apni jagah par bohat qeemti ho. Hamesha apna khayal rakhna. 💗"
+];
+
+function showReason(index) {
+  const output = document.getElementById("reasonOutput");
+  if (!reasons[index]) return;
+  output.textContent = reasons[index];
+  output.style.animation = "none";
+  void output.offsetWidth;
+  output.style.animation = "messageReveal .5s ease both";
+}
+
+/* FINAL MESSAGE TYPEWRITER */
+const finalText = "Meri Shehzadii, this little world was made just for you. May your days be filled with laughter, your heart with peace, and your life with beautiful memories. 💗✨";
+let finalStarted = false;
+
+function startFinalMessage() {
+  if (finalStarted) return;
+  finalStarted = true;
+
+  const target = document.getElementById("finalMessage");
+  const signature = document.getElementById("finalSignature");
+
+  if (reducedMotion) {
+    target.textContent = finalText;
+    signature.classList.add("show");
+    return;
+  }
+
+  let i = 0;
+  const typeTimer = setInterval(() => {
+    target.textContent += finalText.charAt(i);
+    i++;
+    if (i >= finalText.length) {
+      clearInterval(typeTimer);
+      signature.classList.add("show");
+    }
+  }, 38);
+}
+
+if ("IntersectionObserver" in window) {
+  const finalObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        startFinalMessage();
+        finalObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.35 });
+
+  finalObserver.observe(document.getElementById("finalSection"));
+} else {
+  startFinalMessage();
+}
+
+/* CLOSE PHOTO WITH ESCAPE */
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    closeLightbox();
+  }
+});
 </script>
 </body>
 </html>
